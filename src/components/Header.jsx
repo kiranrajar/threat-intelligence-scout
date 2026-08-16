@@ -1,7 +1,7 @@
 import React from 'react';
-import { ShieldAlert, Activity, Settings2, Key, Globe, Sparkles } from 'lucide-react';
+import { ShieldAlert, Activity, CheckCircle2 } from 'lucide-react';
 
-export default function Header({ onOpenSettings, useLiveKeys }) {
+export default function Header() {
   return (
     <header className="sticky top-0 z-50 glass-panel border-b border-cyber-border bg-[#080c14]/90 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
@@ -20,34 +20,23 @@ export default function Header({ onOpenSettings, useLiveKeys }) {
               <h1 className="text-base font-bold font-sans tracking-wide text-white flex items-center gap-2">
                 THREAT INTELLIGENCE SCOUT
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">
-                  REAL-TIME AGENT
+                  REAL-TIME INTELLIGENCE
                 </span>
               </h1>
             </div>
             <p className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5">
               <Activity className="w-3 h-3 text-emerald-400" />
-              <span>Autonomous SOC Agent</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-cyan-400 font-mono">Google Gemini + Tavily Search</span>
+              <span>Autonomous SOC Cyber Security Threat System</span>
             </p>
           </div>
         </div>
 
-        {/* Action Controls */}
+        {/* Live Status Indicator */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>AGENT READY</span>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 text-xs font-mono">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+            <span>ACTIVE THREAT FEED</span>
           </div>
-
-          <button
-            onClick={onOpenSettings}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyber-surface hover:bg-cyber-card border border-cyber-border text-slate-300 hover:text-cyan-300 text-xs font-mono transition-all cursor-pointer"
-            title="Configure API Keys or Webhook Endpoint"
-          >
-            <Settings2 className="w-3.5 h-3.5 text-cyan-400" />
-            <span>API / Webhook Settings</span>
-          </button>
         </div>
 
       </div>
