@@ -1,0 +1,129 @@
+{
+  "name": "Threat intelligence Scout",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').first().json.chatInput }} }}",
+        "options": {
+          "systemMessage": "IMPORTANT:\n\nFor every cybersecurity question, you MUST call the Tavily Search tool before answering.\n\nNever answer from your own knowledge if the question is about:\n- today's cyber threats\n- latest attacks\n- CVEs\n- ransomware\n- threat actors\n- malware\n- security news\n\nAlways search first, then summarize the results into a professional threat intelligence report."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -208,
+        -16
+      ],
+      "id": "73c8403e-6862-453c-a5d2-a965b1b92860",
+      "name": "AI Agent",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -208,
+        192
+      ],
+      "id": "200e1dfb-af8d-4efd-a32e-ae27c3b693c1",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "L7UqRj5gCeQsq1Uf",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -480,
+        -16
+      ],
+      "id": "2f494b8c-8e11-491c-943b-c134eca1d8ca",
+      "name": "When chat message received",
+      "webhookId": "3347cb76-f7c8-43f1-9bc0-3d919825db27"
+    },
+    {
+      "parameters": {
+        "query": "={{ $fromAI(\"search_query\") }}",
+        "options": {}
+      },
+      "type": "@tavily/n8n-nodes-tavily.tavilyTool",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        192
+      ],
+      "id": "91539598-a844-4ae3-9a45-da992face3e3",
+      "name": "Search in Tavily",
+      "credentials": {
+        "tavilyApi": {
+          "id": "tqU54JkhfGbEI8X0",
+          "name": "Tavily account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search in Tavily": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "3681e778-42f3-4738-9b91-d41804cdeaa2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9efbdb71928a02ea4552fa1e7b10bb657086d475a31049fa8a8a5e11589abdfb"
+  },
+  "nodeGroups": [],
+  "id": "Ejg93pwcRgr6e55J",
+  "tags": []
+}
