@@ -5,7 +5,7 @@ import Terminal from './components/Terminal';
 import Technicalities from './components/Technicalities';
 import JsonViewer from './components/JsonViewer';
 import DeploymentGuide from './components/DeploymentGuide';
-import { ShieldAlert, Github, Globe, Terminal as TerminalIcon } from 'lucide-react';
+import { ShieldAlert, Globe, Terminal as TerminalIcon } from 'lucide-react';
 import { rawAgentJson } from './data/agentData';
 
 export default function App() {

@@ -5,8 +5,7 @@ import {
   Terminal, 
   BookOpen, 
   Code, 
-  CloudUpload, 
-  Github, 
+  UploadCloud, 
   Download,
   Activity,
   CheckCircle2
@@ -29,7 +28,7 @@ export default function Header({ activeTab, setActiveTab }) {
     { id: 'terminal', label: 'SOC Intelligence Terminal', icon: Terminal },
     { id: 'tech', label: 'Technicalities & Specs', icon: BookOpen },
     { id: 'json', label: 'Raw JSON Spec', icon: Code },
-    { id: 'deploy', label: 'GitHub & Vercel Deploy', icon: CloudUpload }
+    { id: 'deploy', label: 'GitHub & Vercel Deploy', icon: UploadCloud }
   ];
 
   return (
@@ -87,7 +86,7 @@ export default function Header({ activeTab, setActiveTab }) {
             onClick={() => setActiveTab('deploy')}
             className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold text-xs transition-all shadow-[0_0_15px_rgba(0,242,254,0.3)] cursor-pointer"
           >
-            <CloudUpload className="w-4 h-4" />
+            <UploadCloud className="w-4 h-4" />
             <span>Deploy Guide</span>
           </button>
         </div>

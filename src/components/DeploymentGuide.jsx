@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  CloudUpload, 
-  Github, 
+  UploadCloud, 
+  GitBranch, 
   Terminal, 
   CheckCircle2, 
   Copy, 
@@ -42,7 +42,7 @@ vercel --prod`;
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <CloudUpload className="w-5 h-5 text-cyan-400" />
+              <UploadCloud className="w-5 h-5 text-cyan-400" />
               GitHub & Vercel Deployment Command Center
             </h2>
             <p className="text-sm text-slate-400 mt-1">
@@ -64,7 +64,7 @@ vercel --prod`;
           <div className="flex items-center justify-between pb-3 border-b border-cyber-border">
             <div className="flex items-center gap-3">
               <div className="p-2.5 rounded-xl bg-slate-800 text-white border border-slate-700">
-                <Github className="w-6 h-6" />
+                <GitBranch className="w-6 h-6" />
               </div>
               <div>
                 <span className="text-xs font-mono text-cyan-400 font-bold uppercase">STEP 1</span>
