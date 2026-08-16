@@ -1,57 +1,64 @@
 import React from 'react';
-import Header from './components/Header';
+import AsciiBackground from './components/AsciiBackground';
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import TrustWall from './components/TrustWall';
 import Terminal from './components/Terminal';
-import Strands from './components/Strands';
-import { ShieldAlert, CheckCircle2 } from 'lucide-react';
+import CoverageMatrix from './components/CoverageMatrix';
+import FeatureMatrix from './components/FeatureMatrix';
+import StatsPanel from './components/StatsPanel';
+import PricingTable from './components/PricingTable';
+import FaqAccordion from './components/FaqAccordion';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#080c14] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#090A0F] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden">
       
-      {/* React Bits: Strands Ambient Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-40">
-        <Strands
-          colors={["#00F2FE", "#7928CA", "#10B981", "#FF9900"]}
-          count={3}
-          speed={0.4}
-          amplitude={0.9}
-          waviness={1.2}
-          thickness={0.6}
-          glow={2.2}
-          taper={2.8}
-          spread={1.2}
-          intensity={0.5}
-          saturation={1.4}
-          opacity={0.5}
-          scale={1.3}
-        />
-      </div>
+      {/* Precision WebGL / Canvas ASCII Wave Field Background */}
+      <AsciiBackground />
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Sleek Minimal Header */}
-        <Header />
+        
+        {/* Sticky Minimal Navigation */}
+        <Navigation />
 
-        {/* Main Agent Interface Area */}
-        <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Terminal />
-        </main>
+        {/* Hero Section */}
+        <Hero />
 
-        {/* Simple Clean Footer */}
-        <footer className="glass-panel border-t border-cyber-border mt-12 py-5 bg-[#05080e]">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
-            <div className="flex items-center gap-2">
-              <ShieldAlert className="w-4 h-4 text-cyan-400" />
-              <span className="font-semibold text-slate-200">Threat Intelligence Scout</span>
-              <span>• Real-Time Threat Analysis System</span>
+        {/* Trust Wall Grid with Corner Crosshairs */}
+        <TrustWall />
+
+        {/* Core Product Frame: Threat Intelligence Scout Console */}
+        <section id="agent" className="py-12 border-b border-cyber-border bg-[#07090F]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-6 space-y-1">
+              <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">+ LIVE AGENT CONSOLE +</span>
+              <h2 className="text-2xl font-serif text-white">Execute real-time threat intelligence reconnaissance.</h2>
             </div>
 
-            <div className="flex items-center gap-3 font-mono text-[11px]">
-              <span className="text-emerald-400 flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5" /> Direct Advisory Verification & Link Telemetry
-              </span>
-            </div>
+            <Terminal />
           </div>
-        </footer>
+        </section>
+
+        {/* Global Threat Matrix */}
+        <CoverageMatrix />
+
+        {/* Feature Matrix (No Floating Cards) */}
+        <FeatureMatrix />
+
+        {/* Count-Up Metrics Panel */}
+        <StatsPanel />
+
+        {/* Pricing Tiers */}
+        <PricingTable />
+
+        {/* FAQ Accordion */}
+        <FaqAccordion />
+
+        {/* Final CTA & Sitemap Footer */}
+        <Footer />
+
       </div>
 
     </div>

@@ -4,35 +4,92 @@
 
 @layer base {
   body {
-    background-color: #080c14;
+    background-color: #090A0F;
     color: #f1f5f9;
     font-family: 'Inter', sans-serif;
   }
 }
 
-/* Custom Cyber Glassmorphism & Effects */
-.glass-panel {
-  background: rgba(14, 22, 38, 0.7);
+/* Precision Chamfered Cut Corner Utilities */
+.chamfer {
+  clip-path: polygon(
+    0 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+}
+
+.chamfer-lg {
+  clip-path: polygon(
+    0 16px,
+    16px 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+}
+
+.chamfer-sm {
+  clip-path: polygon(
+    0 4px,
+    4px 0,
+    calc(100% - 4px) 0,
+    100% 4px,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    4px 100%,
+    0 calc(100% - 4px)
+  );
+}
+
+/* Glass & Steel Panels */
+.steel-panel {
+  background: rgba(18, 21, 30, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(30, 46, 74, 0.8);
+  border: 1px solid rgba(35, 40, 56, 0.9);
 }
 
-.glass-panel-glow {
-  background: rgba(14, 22, 38, 0.75);
+.steel-panel-glow {
+  background: rgba(18, 21, 30, 0.85);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 242, 254, 0.3);
-  box-shadow: 0 0 25px rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
 }
 
-.glow-cyan-border {
-  border-color: rgba(0, 242, 254, 0.6);
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+/* Corner Plus Motif (+) Helper */
+.crosshair-corner {
+  position: relative;
 }
 
-.glow-purple-border {
-  border-color: rgba(157, 78, 221, 0.6);
-  box-shadow: 0 0 15px rgba(157, 78, 221, 0.25);
+.crosshair-corner::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #06B6D4;
+  opacity: 0.6;
+}
+
+.crosshair-corner::after {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #06B6D4;
+  opacity: 0.6;
 }
 
 /* Custom Scrollbar */
@@ -42,14 +99,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #080c14;
+  background: #090A0F;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e2e4a;
-  border-radius: 4px;
+  background: #232838;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f2fe;
+  background: #06B6D4;
 }
