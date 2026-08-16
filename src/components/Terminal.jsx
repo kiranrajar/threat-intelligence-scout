@@ -21,6 +21,7 @@ import {
   Zap
 } from 'lucide-react';
 import { presetThreatQueries } from '../data/agentData';
+import { callLiveAgent, AGENT_WEBHOOK_URL } from '../services/agentApi';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Threat Intelligence Brain — handles any type of query
@@ -347,23 +348,65 @@ export default function Terminal() {
   };
 
   const sendMessage = async (text) => {
+    const sessionId = 'scout-' + Math.random().toString(36).slice(2, 10);
     const userMsg = { role: 'user', text, id: Date.now() };
     setMessages(prev => [...prev, userMsg]);
     setInputQuery('');
     setIsProcessing(true);
 
-    // Simulate agent thinking steps
+    // Animate pipeline steps
     for (let s = 1; s <= 4; s++) {
       setStep(s);
-      await new Promise(r => setTimeout(r, 400 + s * 100));
+      await new Promise(r => setTimeout(r, 350 + s * 80));
     }
 
-    const response = buildThreatResponse(text);
-    const agentMsg = { role: 'agent', ...response, id: Date.now() + 1 };
+    // ── Try live backend first ─────────────────────────────────────────────
+    let agentMsg;
+    const liveText = await callLiveAgent(text, sessionId);
+
+    if (liveText) {
+      // Live response from Gemini + real-time web search
+      agentMsg = {
+        role: 'agent',
+        type: 'live',
+        severity: null,
+        cvss: null,
+        vector: null,
+        isLive: true,
+        text: liveText,
+        links: extractLinksFromText(liveText),
+        id: Date.now() + 1
+      };
+    } else {
+      // Fallback: built-in intelligence engine
+      const response = buildThreatResponse(text);
+      agentMsg = { role: 'agent', isLive: false, ...response, id: Date.now() + 1 };
+    }
+
     setMessages(prev => [...prev, agentMsg]);
     setIsProcessing(false);
     setStep(0);
     inputRef.current?.focus();
+  };
+
+  // Extract any URLs from live agent response text as clickable links
+  const extractLinksFromText = (text) => {
+    const urlRegex = /https?:\/\/[^\s)"']+/g;
+    const found = [...new Set(text.match(urlRegex) || [])];
+    return found.slice(0, 6).map(url => {
+      // Label the link based on domain
+      const host = (() => { try { return new URL(url).hostname; } catch { return url; } })();
+      const name = host.includes('nvd.nist') ? `NVD Advisory` :
+                   host.includes('cisa.gov') ? `CISA Advisory` :
+                   host.includes('mitre.org') ? `MITRE ATT&CK` :
+                   host.includes('cvedetails') ? `CVE Details` :
+                   host.includes('exploit-db') ? `Exploit-DB` :
+                   host.includes('github') ? `GitHub Advisory` :
+                   host.includes('virustotal') ? `VirusTotal` :
+                   host.includes('abuse.ch') ? `Abuse.ch` :
+                   host;
+      return { name, url };
+    });
   };
 
   const clearChat = () => {
