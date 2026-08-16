@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert, Terminal, ArrowDownRight, Radio, Github, Globe, ExternalLink } from 'lucide-react';
+import { ShieldAlert, Terminal, ArrowDownRight, Radio, Globe, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -33,7 +33,7 @@ export default function Footer() {
               <span>THREAT SCOUT</span>
             </div>
             <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-              Precision-engineered developer security tool built on n8n, LangChain ReAct, Tavily Search, and Google Gemini LLMs.
+              Precision-engineered developer security tool built on autonomous ReAct decision architecture and Google Gemini LLMs.
             </p>
           </div>
 
@@ -61,9 +61,9 @@ export default function Footer() {
             <div className="p-3 bg-[#12151E] border border-cyber-border space-y-1">
               <div className="flex items-center gap-2 text-emerald-400 text-[11px]">
                 <Radio className="w-3 h-3 animate-pulse" />
-                <span>SYSTEM STATUS: 100% OPERATIONAL</span>
+                <span>SYSTEM STATUS: OPERATIONAL</span>
               </div>
-              <p className="text-[10px] text-slate-500">n8n Workflow Execution ID: Ejg93pwcRgr6e55J</p>
+              <p className="text-[10px] text-slate-500">Threat Telemetry Feed: Active</p>
             </div>
           </div>
 

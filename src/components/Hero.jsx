@@ -53,7 +53,7 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400 font-bold">[+]</span>
-            <span>SEARCH: TAVILY WEB API</span>
+            <span>SEARCH: REAL-TIME WEB API</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-purple-400 font-bold">[+]</span>

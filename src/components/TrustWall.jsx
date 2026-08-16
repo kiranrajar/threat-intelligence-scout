@@ -6,8 +6,8 @@ export default function TrustWall() {
     { name: "CISA KEV CATALOG", icon: Shield, code: "FED-GOV-01" },
     { name: "NIST NVD DATABASE", icon: Server, code: "NVD-API-v2" },
     { name: "MITRE ATT&CK MATRIX", icon: Cpu, code: "ATT&CK-v14" },
-    { name: "TAVILY WEB SEARCH", icon: Activity, code: "SEARCH-AI" },
-    { name: "LANGCHAIN REACT", icon: Terminal, code: "AGENT-v3.1" },
+    { name: "REAL-TIME WEB RECON", icon: Activity, code: "SEARCH-AI" },
+    { name: "AUTONOMOUS REACT ENGINE", icon: Terminal, code: "AGENT-v3.1" },
     { name: "GOOGLE GEMINI PA LM", icon: Lock, code: "LLM-MODAL" }
   ];
 
