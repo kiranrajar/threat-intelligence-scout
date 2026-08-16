@@ -1,0 +1,10 @@
+.shuffle-text {
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+.shuffle-text.is-ready {
+  visibility: visible;
+}
